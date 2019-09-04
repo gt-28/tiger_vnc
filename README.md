@@ -1,4 +1,4 @@
-# How to configure Virtual Network Computing (VNC) in Red Hat Enterprise Linux 7 
+# How to configure Virtual Network Computing (VNC) in Red Hat Enterprise Linux 7 / CentOS
 
 ## Configuring `tigervnc-server` on `rhel/centos`
 
