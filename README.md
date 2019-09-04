@@ -50,7 +50,7 @@ Connect to the VNC Server Through SSH Tunnel/VNC-viewer.
 
 Edit the file to look like this:
 
-    ```
+    
     [Unit]
     Description=Remote desktop service (VNC)
     After=syslog.target network.target
@@ -80,8 +80,7 @@ Edit the file to look like this:
     [Install]
     WantedBy=multi-user.target
 
-    ```
-
+    
 
 5. start the process:
 
