@@ -36,6 +36,17 @@ Connect to the VNC Server Through SSH Tunnel/VNC-viewer.
 > Step 1:
 
    `cp /lib/systemd/system/vncserver@.service /etc/systemd/system/vncserver@:1.service`
+   
+   
+> Notes: https://bugzilla.redhat.com/show_bug.cgi?id=1583159
+
+    For that matter, ^^ here's our unit file for a VNC server that runs as a "service":
+
+ * Start and Stop are properly detected
+ * Logging out of the server causes the service to be marked as stop
+ * 15 seconds after logout, the service is restart to permit a new login
+
+> The fix is to remove the `runuser` invocation from the ExecStart= key, start vncserver directly and instead set the User= and Group= keys in the service section:
 
 Edit the file to look like this:
 
@@ -70,15 +81,7 @@ Edit the file to look like this:
     WantedBy=multi-user.target
 
     ```
-> Notes: https://bugzilla.redhat.com/show_bug.cgi?id=1583159
 
-    For that matter, ^^ here's our unit file for a VNC server that runs as a "service":
-
- * Start and Stop are properly detected
- * Logging out of the server causes the service to be marked as stop
- * 15 seconds after logout, the service is restart to permit a new login
-
-> The fix is to remove the `runuser` invocation from the ExecStart= key, start vncserver directly and instead set the User= and Group= keys in the service section:
 
 5. start the process:
 
